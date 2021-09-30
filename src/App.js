@@ -1,19 +1,22 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MyNavbar from "./components/MyNavbar";
+
 import WarningSign from "./components/WarningSign";
 import MyBadge from "./components/MyBadge";
 import BookList from "./components/BookList";
 import books1 from "./data/horror.json";
+import AddComment from "./components/AddComment";
+import MyNavbar from "./components/MyNavbar";
 
 
 function App() {
   return (
     <div className="App">
-      <MyNavbar brand="Welcome to BookShelf" />
+      <MyNavbar/>
+      <AddComment  />
     
-      <WarningSign text="its dangerous!!" />
-      <MyBadge color="primary" text="Badge" />
+      <WarningSign text="Warning!!!" />
+      <MyBadge color="primary" text="My Badge" />
       <BookList array={books1} />
     </div>
   );
