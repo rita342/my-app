@@ -1,21 +1,32 @@
+import React from 'react'
+import { Card } from 'react-bootstrap'
+import CommentArea from './CommentArea'
 
+class SingleBook extends React.Component {
 
-const MyFavoriteBook = (book) => {
-  return (
-   
-      <div className="card ml-10"key={book.asin}>
-        <img src={book.img} className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">{book.title}</h5>
-          <div className="under-the-title">
-            <h4>{book.price}</h4>
-            <button onClick ={()=>this.setState({color:this})}>Click me</button>
-          </div>
+    state = {
+        selected: false
+    }
 
-        </div>
-      </div>
-    
-  );
-};
+    render() {
+        return (
+            <>
+                <Card
+                    onClick={() => this.setState({ selected: !this.state.selected })}
+                    style={{ border: this.state.selected ? '3px solid red' : 'none' }}
+                >
+                    <Card.Img variant="top" src={this.props.book.img} />
+                    <Card.Body>
+                        <Card.Title style={{ color: 'black' }}>{this.props.book.title}</Card.Title>
+                    </Card.Body>
+                </Card>
+                {
+                    this.state.selected && <CommentArea asin={this.props.book.asin} />
+                }
+            </>
+        )
+    }
 
-export default MyFavoriteBook;
+}
+
+export default SingleBook
